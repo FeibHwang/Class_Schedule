@@ -108,6 +108,9 @@ public:
 	unordered_set<int> get_prof_preference(int prof_id);
 
 	inline int get_prof_id_by_course_schedule_id(int _local_id) { return sch->get_prof_id_by_index(_local_id); }
+
+	inline void connect_group_fitness(vector<double> data) { group_fitness.insert(group_fitness.end(), data.begin(), data.end()); }
+
 private:
 
 	Schedule *sch;
