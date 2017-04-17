@@ -15,8 +15,7 @@ class Population
 public:
 	struct _case
 	{
-		int _class_id;  // course ID: real course id i.e 5010
-		//int Class_id;
+		int _class_id;  // course ID: real class id i.e 21342
 		int _room;       // room ID: real room id i.e DL226 -> a unique number for diffrent room
 		int _time_slot;  // time slot: real time, set by add_time
 		int _professor_id; //professor ID
@@ -102,7 +101,13 @@ public:
 		_chromosome_base = newGene; 
 	}
 
-	
+	inline int get_professorNum() { return sch->get_professor_size(); }
+
+	void set_prof_preference(int prof_id, vector<int> _time);
+
+	unordered_set<int> get_prof_preference(int prof_id);
+
+	inline int get_prof_id_by_course_schedule_id(int _local_id) { return sch->get_prof_id_by_index(_local_id); }
 private:
 
 	Schedule *sch;

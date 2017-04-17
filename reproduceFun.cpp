@@ -98,25 +98,29 @@ int reproduceFun(Population *p, int maxGeneration, double mutationRate, double f
 	int itr = 0;
 	// idx of the solution chromosome in the base.
 	int slnIdx = -1;
+	
 	while (itr<maxGeneration) {
+		
 		itr++;
 		vector<double> prevFScore = p->get_group_fitness(); // previous generation's fScore
 		vector<vector<Population::_case>> prevGene = p->get_whole_group(); // previous generation's chromosome_base
 		vector<vector<Population::_case>> newGene = passDown(perX, perY, prevGene, prevFScore); // new generation
 		
-
+		
 		double pSize = double(p->get_population_size());
 		int selectNum = int ( (pSize*perZ) / 2);
 		for (int i = 0; i < selectNum; i++) {
 			// randomized selection
 			srand((int)time(0)+i);
+			
 			pair<int, int> tp1 = p->randSelect();
 			// mating + mutation
+			
 			vector<vector<Population::_case>> tp2 = p->matingFun(tp1.first, tp1.second, mutationRate);
 			newGene.push_back(tp2[0]);
 			newGene.push_back(tp2[1]);
 		}
-
+		
 		// update the chromosome base, this member function needs to be add to Population
 		// current method does not keep low fitScore chromosome for diversity
 

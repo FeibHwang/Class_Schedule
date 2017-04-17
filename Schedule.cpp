@@ -32,6 +32,7 @@ void Schedule::add_professor(int _id, string _name, vector<int> perfer)
 	}
 	_professor_id_check[_name] = _local_id;
 	_professor_table[_local_id] = *t;
+	_professor_local_index[_id] = _local_id;
 }
 
 void Schedule::add_course(int _id, string _course_name, int _professor)

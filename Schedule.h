@@ -49,7 +49,13 @@ public:
 
 	inline int get_course_id(string s) { return _course_id_check[s]; }
 
+	inline void set_prof_preference(int i, vector<int> pre) { _professor_table[_professor_local_index[i]].set_prefer_time(pre); }
 
+	inline unordered_set<int> get_prof_preference(int _id) { return _professor_table[_professor_local_index[_id]].get_prefer_time(); }
+
+	inline int get_professor_size() { return _professor_table.size(); }
+
+	inline int get_prof_id_by_index(int _local_id) { return _professor_table[_local_id].getid(); }
 
 
 private:
@@ -61,6 +67,7 @@ private:
 
 	unordered_map<string, int> _professor_id_check;  // check the professor ID by name
 	unordered_map<string, int> _course_id_check; //check the course ID by name
+	unordered_map<int, int> _professor_local_index; //check professor local_index by real id
 
 	int course_NO = 0;
 	int prof_NO = 0;

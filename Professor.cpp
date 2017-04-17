@@ -6,7 +6,11 @@ Professor::Professor(int _id, string _name, vector<int> prefer)
 {
 	_idd = _id;
 	_namee = _name;
-	_prefer_time = prefer;
+	if (!prefer.empty())
+	{
+		for (int i = 0; i < prefer.size(); ++i)
+			_prefer_time.insert(prefer[i]);
+	}
 }
 
 Professor::Professor()
